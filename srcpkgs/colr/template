@@ -1,0 +1,18 @@
+# Template file for 'colr'
+pkgname=colr
+version=1
+revision=1
+create_wrksrc=yes
+depends="bash python perl"
+short_desc="Color scripts"
+maintainer="Léo Paquet <paquet.leo@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://git.io/color.sh"
+distfiles="https://git.io/colr.tar.gz"
+checksum=b8a14e8dace043f5b7ba8226f98fbcf41fe23c07488196721474282f8b77964c
+
+do_install() {
+	for file in $wrksrc/stark-Color-Scripts-*/color-scripts/*; do
+		vbin $file
+	done
+}
