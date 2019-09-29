@@ -1,0 +1,23 @@
+# Template file for 'pyenv'
+pkgname=pyenv
+version=1
+revision=1
+create_wrksrc=yes
+makedepends="git"
+depends="python libressl-devel zlib-devel"
+short_desc="Simple Python version management"
+maintainer="Léo Paquet <paquet.leo@gmail.com>"
+license="MIT"
+homepage="https://github.com/pyenv/pyenv"
+
+do_fetch() {
+	git clone https://github.com/pyenv/pyenv.git ${wrksrc}
+}
+
+do_install() {
+	dest=/etc/profile.d/pyenv.sh
+	echo '# Added by pyenv' >> $dest
+	echo 'PYENV_ROOT="$HOME/.pyenv"' >> $dest
+	echo 'PATH="$PYENV_ROOT/bin:$PATH"' >> $dest
+	echo '"$(pyenv init -)"' >> $dest
+}
