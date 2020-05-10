@@ -1,0 +1,21 @@
+# Template file for 'popcorn-time'
+pkgname=popcorn-time
+version=0.4.4
+revision=1
+create_wrksrc=yes
+short_desc="Allow any user to easily watch movies through torrent streaming"
+maintainer="Léo Paquet <paquet.leo@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://popcorntime.sh"
+distfiles="https://get.popcorntime.app/build/Popcorn-Time-$version-linux64.zip"
+checksum=fdfabf8800c385bafec4bf162dd26f7df6d8c4c24671dce0aa23997716c5a314
+nopie=yes
+
+do_install() {
+	vmkdir opt/popcorn-time
+	vcopy * /opt/popcorn-time
+}
+
+post_install() {
+	vinstall ${FILESDIR}/popcorn-time.desktop 644 usr/share/applications
+}
