@@ -1,0 +1,25 @@
+# Template file for 'xmind'
+pkgname=xmind
+version=10.2.1
+revision=1
+#archs="i686 x86_64"
+create_wrksrc=yes
+hostmakedepends="rpmextract"
+short_desc="Mind Mapping Software"
+maintainer="Léo Paquet <paquet.leo@gmail.com>"
+license="custom:Proprietary"
+homepage="https://www.xmind.net/"
+distfiles="https://www.xmind.net/xmind/downloads/XMind-2020-for-Linux-x86-64bit-$version-202008051959.rpm"
+checksum=f21625f7f3f1ed8b733494ee222f37b4224cdf8da9ee7e5eb62a89f97b999425
+
+do_install() {
+	vmkdir opt
+	vcopy opt/XMind opt/
+
+	vmkdir usr/share
+	vcopy usr/share/applications usr/share/
+	vcopy usr/share/icons usr/share/
+
+	vlicense opt/XMind/LICENSE.electron.txt
+	vlicense opt/XMind/LICENSES.chromium.html
+}
